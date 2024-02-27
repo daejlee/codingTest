@@ -1,3 +1,4 @@
+# TC == O(n^2) SC == O(1)
 class Solution:
     def isValidSudoku(self, board: list[list[str]]) -> bool:
         for i in range(len(board)):
