@@ -35,7 +35,28 @@ class Solution:
         return True
 
 
-potato = Solution()
+# TC == O(n^2) SC == O(1) / Using string. More intuitive
+class SolutionV2:
+    def isValidSudoku(self, board: list[list[str]]) -> bool:
+        seen = []
+        for i in range(len(board)):
+            for k in range(len(board)):
+                if board[i][k].isdecimal():
+                    buf = "(" + board[i][k] + ")"
+                    if (
+                        buf + str(i) in seen
+                        or str(k) + buf in seen
+                        or str(k // 3) + buf + str(i // 3) in seen
+                    ):
+                        return False
+                    else:
+                        seen.append(buf + str(i))
+                        seen.append(str(k) + buf)
+                        seen.append(str(k // 3) + buf + str(i // 3))
+        return True
+
+
+potato = SolutionV2()
 res = potato.isValidSudoku(
     board=[
         ["5", "3", ".", ".", "7", ".", ".", ".", "."],
