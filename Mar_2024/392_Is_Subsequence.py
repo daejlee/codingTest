@@ -19,6 +19,27 @@ class Solution:
             return False
 
 
-potato = Solution()
+import bisect as bi
+from collections import defaultdict
+
+
+# TC == O(KlogM) SC == O(N) / if we iterate this with many many s to same t
+class SolutionV2:
+    def isSubsequence(self, s: str, t: str) -> bool:
+        idx = defaultdict(list)
+        for i, c in enumerate(t):
+            idx[c].append(i)
+        prev = 0
+        for i, c in enumerate(s):
+            j = bi.bisect_left(
+                idx[c], prev
+            )  # 현재 문자 c의 인덱스 리스트에서 prev보다 크거나 같은 첫 번째 위치를 찾습니다.
+            if j == len(idx[c]):
+                return False
+            prev = idx[c][j] + 1
+        return True
+
+
+potato = SolutionV2()
 res = potato.isSubsequence("abc", "adffsbdsgsc")
 print(res)
