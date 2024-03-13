@@ -53,7 +53,7 @@ class Solution:
         self.search(row + 1, col + 1, memo, idx_memo, tri)
 
 
-# Solution
+# Solution - Iteration TC == O(N) SC == O(N^2)
 class Solution:
     def minimumTotal(self, triangle: list[list[int]]) -> int:
         if not triangle:
@@ -75,3 +75,15 @@ class Solution:
                     )
 
         return min(memo[-1])  # Return smallest from last row
+
+
+# Solution - Iteration TC == O(N) SC == O(N)
+class Solution:
+    def minimumTotal(self, triangle: list[list[int]]) -> int:
+        n = len(triangle)
+        minlen = triangle[-1].copy()  # 마지막 행으로 minlen 초기화
+        for layer in range(n - 2, -1, -1):  # 바텀업 방식으로 각 레이어를 순회
+            for i in range(layer + 1):  # 각 레이어의 노드를 순회
+                # 현재 노드에서 가능한 두 자식 중 최소값을 찾아 현재 노드의 값과 더함
+                minlen[i] = min(minlen[i], minlen[i + 1]) + triangle[layer][i]
+        return minlen[0]  # 최상단 노드의 최소 경로 합 반환
