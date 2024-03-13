@@ -59,19 +59,19 @@ class Solution:
         if not triangle:
             return 0
 
-        memo = [[0] * len(row) for row in triangle]
+        memo = [[0] * len(row) for row in triangle]  # Make 2d memo
         memo[0][0] = triangle[0][0]
 
         for row in range(1, len(triangle)):
             for col in range(len(triangle[row])):
-                if col == 0:
+                if col == 0:  # Far left
                     memo[row][col] = memo[row - 1][col] + triangle[row][col]
-                elif col == len(triangle[row]) - 1:
+                elif col == len(triangle[row]) - 1:  # Far right
                     memo[row][col] = memo[row - 1][col - 1] + triangle[row][col]
-                else:
+                else:  # Between
                     memo[row][col] = (
                         min(memo[row - 1][col - 1], memo[row - 1][col])
                         + triangle[row][col]
                     )
 
-        return min(memo[-1])
+        return min(memo[-1])  # Return smallest from last row
