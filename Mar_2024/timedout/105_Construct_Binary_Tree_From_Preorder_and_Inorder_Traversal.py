@@ -49,9 +49,8 @@ class Solution:
 # Recursive solution. SC == O(N^2) SC == O(N)
 class SolutionV2:
     def buildTree(self, preorder: list[int], inorder: list[int]) -> Optional[TreeNode]:
-        if inorder:
+        if preorder:
             idx = inorder.index(preorder.pop(0))
-            root = TreeNode(inorder[idx])
+            root = TreeNode(val=inorder[idx])
             root.left = self.buildTree(preorder, inorder[0:idx])
             root.right = self.buildTree(preorder, inorder[idx + 1 :])
-            return root
