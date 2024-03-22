@@ -8,13 +8,10 @@ class TreeNode:
 
 class Solution:
     def buildTree(self, inorder: list[int], postorder: list[int]) -> Optional[TreeNode]:
-        if postorder:
-            try:
-                idx = inorder.index(postorder[-1])
-                postorder.pop()
-            except:
-                return
-            root = TreeNode(inorder[idx])
-            root.right = self.buildTree(inorder[idx + 1 :], postorder)
-            root.left = self.buildTree(inorder[0 : idx + 1], postorder)
-            return root
+        if not inorder or not postorder:
+            return None
+        root = TreeNode(postorder.pop())
+        idx = inorder.index(root.val)
+        root.right = self.buildTree(inorder[idx + 1 :], postorder)
+        root.left = self.buildTree(inorder[:idx], postorder)
+        return root
