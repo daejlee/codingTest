@@ -46,7 +46,7 @@ class Solution:
         return res
 
 
-# Recursive solution. SC == O(N^2) SC == O(N)
+# Recursive solution. SC == O(N^2) SC == O(N) Reminds me of quick sort in terms of pivoting
 class SolutionV2:
     def buildTree(self, preorder: list[int], inorder: list[int]) -> Optional[TreeNode]:
         if preorder:
