@@ -1,4 +1,4 @@
-# Prev code: 사다리타기 시뮬레이션 구현에 실패한 코드
+# Prev code: 사다리타기 구현을 너무 복잡하게 생각했음.
 # def run_ladder(lines):
 #     res = [0 for x in range(n)]
 #     for i in range(1, n + 1):
@@ -30,7 +30,7 @@ ans = m
 def run_ladder():
     num1, num2 = [i for i in range(n)], [i for i in range(n)]
 
-    # 이걸 얶떢께 생각함? ㅋㅋ 천잰가
+    # 사다리 타는 부분 유심히 볼 것
     for _, idx in lines:
         num1[idx], num1[idx + 1] = num1[idx + 1], num1[idx]
     for _, idx in selected_lines:
@@ -60,3 +60,5 @@ def find_min_lines(cnt):
 
 find_min_lines(0)
 print(ans)
+
+# 0723
