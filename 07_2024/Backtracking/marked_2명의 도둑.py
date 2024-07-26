@@ -41,6 +41,20 @@ a = []
 max_val = 0
 
 
+def intersect(a, b, c, d):
+    return not (b < c or d < a)
+
+
+def possible(sx1, sy1, sx2, sy2):
+    if sy1 + m - 1 >= n or sy2 + m - 1 >= n:
+        return False
+    if sx1 != sx2:
+        return True
+    if intersect(sy1, sy1 + m - 1, sy2, sy2 + m - 1):
+        return False
+    return True
+
+
 def find_max_sum(curr_idx, curr_weight, curr_val):
     global max_val
     if curr_idx == m:
@@ -62,20 +76,6 @@ def find_max(sx, sy):
     max_val = 0
     find_max_sum(0, 0, 0)
     return max_val
-
-
-def intersect(a, b, c, d):
-    return not (b < c or d < a)
-
-
-def possible(sx1, sy1, sx2, sy2):
-    if sy1 + m - 1 >= n or sy2 + m - 1 >= n:
-        return False
-    if sx1 != sx2:
-        return True
-    if intersect(sy1, sy1 + m - 1, sy2, sy2 + m - 1):
-        return False
-    return True
 
 
 ans = max(
