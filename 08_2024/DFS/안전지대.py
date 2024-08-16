@@ -1,6 +1,6 @@
 import sys
 
-sys.setrecursionlimit(10**5)  # 재귀 깊이 설정
+sys.setrecursionlimit(2500)  # 재귀 깊이 설정
 n, m = map(int, input().split())
 highest = 0
 mat = []
