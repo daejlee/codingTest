@@ -21,7 +21,7 @@ n, m = map(int, input().split())
 lines = []
 for _ in range(m):
     a, b = tuple(map(int, input().split()))
-    lines.append((b, a - 1))
+    lines.append((b, a - 1))  # !!!!! sort by y, x
 lines.sort()
 selected_lines = []
 ans = m
@@ -51,11 +51,10 @@ def find_min_lines(cnt):
         return
 
     # 조합 전개하는 부분 유심히 볼 것
-    selected_lines.append(lines[cnt])
-    find_min_lines(cnt + 1)
-    selected_lines.pop()
-
-    find_min_lines(cnt + 1)
+    for i in range(cnt, m):
+        selected_lines.append(lines[i])
+        find_min_lines(i + 1)
+        selected_lines.pop()
 
 
 find_min_lines(0)
@@ -63,3 +62,4 @@ print(ans)
 
 # 0723
 # 0724
+# 0831
