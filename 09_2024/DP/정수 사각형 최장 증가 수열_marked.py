@@ -55,10 +55,7 @@
 # print(res)
 
 # 0920: 일반적인 BFS 문제로 접근하였으나 그래프 탐색이 필요없는 문제였다. DP를 "어떤 순서로 채워나가야 하는지"를 고민해야 했다.
-
-from collections import deque
-
-q = deque()
+# 0921: 복기
 n = int(input())
 mat = []
 dp = [[1 for _ in range(n)] for _ in range(n)]
@@ -66,30 +63,28 @@ dxs, dys = [0, -1, 0, 1], [-1, 0, 1, 0]
 for _ in range(n):
     mat.append([int(x) for x in input().split()])
 cells = []
-
 for i in range(n):
     for j in range(n):
         cells.append((mat[i][j], i, j))
-
 cells.sort()
 
+
 # 배열의 값 중 가장 작은 좌표를 시작으로 채워나간다. 이 경우 그래프 탐색이 필요 없으며, 상하좌우만 살피면 된다.
-
-
-def is_vaild(nx, ny, curr_val):
-    if 0 <= nx < n and 0 <= ny < n and mat[nx][ny] > curr_val:
+def is_valid(nx, ny, val):
+    if 0 <= nx < n and 0 <= ny < n and mat[nx][ny] > val:
         return True
     return False
 
 
-for _, x, y in cells:
+for val, x, y in cells:
     for dx, dy in zip(dxs, dys):
         nx, ny = x + dx, y + dy
-        if is_vaild(nx, ny, mat[x][y]):
+        if is_valid(nx, ny, val):
             dp[nx][ny] = max(dp[nx][ny], dp[x][y] + 1)
 
-ans = 0
-
+res = 0
 for i in range(n):
     for j in range(n):
-        ans = max(ans, dp[i][j])
+        if dp[i][j] > res:
+            res = dp[i][j]
+print(res)
