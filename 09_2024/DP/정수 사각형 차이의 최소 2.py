@@ -94,7 +94,7 @@ def solve(lower_bound):
     for i in range(n):
         for j in range(n):
             if mat[i][j] < lower_bound:
-                mat[i][j] = INT_MAX
+                mat[i][j] = INT_MAX  # 돌아가지 않을 좌표이다. 초장에 틀어 막는다는 느낌
 
     init_fill()
     for i in range(1, n):
@@ -112,3 +112,5 @@ for lower_bound in range(1, 101):
     ans = min(ans, upper_bound - lower_bound)
 
 print(ans)
+
+# 0928: 복기. 돌아오지 않을 좌표들 INT_MAX로 틀어막는 부분
