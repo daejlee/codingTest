@@ -114,3 +114,4 @@ for lower_bound in range(1, 101):
 print(ans)
 
 # 0928: 복기. 돌아오지 않을 좌표들 INT_MAX로 틀어막는 부분
+# 1005: 복기 - 풀이과정 접근이 쉽지 않다..
