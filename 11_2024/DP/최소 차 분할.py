@@ -6,10 +6,7 @@ arr = [0] + [int(x) for x in sys.stdin.readline().split()]
 m = sum(arr)
 # dp[i][j] - 지금까지 i번째 수까지만 고려했을 때
 # 고른 수의 합을 j로 만드는 것이 가능하면 True, 불가능하면 False
-dp = [
-    [0 for _ in range(m + 1)]
-    for _ in range(n + 1)
-]
+dp = [[0 for _ in range(m + 1)] for _ in range(n + 1)]
 
 dp[0][0] = True
 
@@ -30,3 +27,5 @@ for i in range(1, m):
         ans = min(ans, abs(i - (m - i)))
 
 print(ans)
+
+# 1105: 구현 실패. 2차원 DP를 사용하는 법을 익히자.
