@@ -31,3 +31,5 @@ if ans == -INT_MIN:
     print(-1)
 else:
     print(ans)
+
+# 포문 거꾸로 돌려서 중복 제거하는 로직
