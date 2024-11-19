@@ -51,7 +51,7 @@ for i in range(3, n + 1):
         if j and dp[i - 1][j - 1]:
             dp[i][j] = max(dp[i][j], dp[i - 1][j - 1] + coins[i])
 
-ans = max(dp[n])
-# for elem in dp:
-#     print(elem)
+ans = max(
+    dp[n]
+)  # 왜 n번째만 체크? -> n번째 계단까지 올라왔을 때의 최대값을 구하는 것이므로. 다 순회하면 오버해서 구한다
 print(ans)
