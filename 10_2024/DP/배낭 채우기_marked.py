@@ -18,3 +18,6 @@ for i in range(n):
                 continue
             dp[j] = max(dp[j], dp[j - curr_w] + curr_val)
 print(max(dp))
+
+# 11/28: 마지막 복기. 백지에서 막힘없이 풀어내었음. 끝!
+# 핵심은 인덱스를 거꾸로 돌려서 중복을 제거하는 것이다.
